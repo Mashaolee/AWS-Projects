@@ -1,17 +1,17 @@
 **AWS Multi-AZ Windows Application Architecture**
 
-This document describes the highly available (HA) and scalable infrastructure designed to host a stateful Windows-based web application on AWS, ensuring redundancy, shared storage access, and robust security.
+This document describes the highly available (HA) and scalable infrastructure designed to host a stateful Windows-based web application on AWS, ensuring redundancy, shared storage access, and robust security.  
 
-1. High-Level Goal
-- To deploy a Windows application across two distinct AWS Availability Zones (AZs) using shared, managed storage (FSx) to achieve sub-second failover and maintain data consistency during an outage of any single component.
+1. High-Level Goal  
+- To deploy a Windows application across two distinct AWS Availability Zones (AZs) using shared, managed storage (FSx) to achieve sub-second failover and maintain data consistency during an outage of any single component.   
 
-2. Architecture Diagram
+2. Architecture Diagram   
 - The overall architecture is fully redundant, spanning two Availability Zones (AZ-01 and AZ-02).   
 
 3. Components Breakdown
-   ~ Route 5: Acts as the public entry point, routing user traffic via an Alias Record directly to the Application Load Balancer (ALB).  
-   ~ Application Load Balancer (ALB): Distributes incoming web traffic (HTTP/S) across the two EC2 instances. Performs continuous Health Checks to ensure traffic is only sent to healthy servers.
-   ~ Internet Gateway (IGW): Allows the EC2 instances in the Public Subnets to connect to the public internet for updates, patches, and external AWS service communication.
+   ~ Route 5: Acts as the public entry point, routing user traffic via an Alias Record directly to the Application Load Balancer (ALB).   
+   ~ Application Load Balancer (ALB): Distributes incoming web traffic (HTTP/S) across the two EC2 instances. Performs continuous Health Checks to ensure traffic is only sent to healthy servers.   
+   ~ Internet Gateway (IGW): Allows the EC2 instances in the Public Subnets to connect to the public internet for updates, patches, and external AWS service communication.   
    ~ EC2: The Windows Server instances running the application (e.g., IIS). Deployed in Public Subnets for ALB accessibility and configured to automatically join the Active Directory (AD) domain.
    ~ FSx for Windows: Provides a fully managed, highly available, and redundant network file share (SMB protocol). It is the single source of truth for application data, ensuring data consistency regardless of which EC2 instance serves the request.
    ~ AWS Managed AD: Provides centralized user authentication, Kerberos tickets, and DNS resolution, which is essential for securely joining the EC2 instances and allowing them to mount the FSx file share.
