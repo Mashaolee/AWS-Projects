@@ -1,4 +1,4 @@
-:AWS Multi-AZ Windows Application Architecture:
+**AWS Multi-AZ Windows Application Architecture**
 
 This document describes the highly available (HA) and scalable infrastructure designed to host a stateful Windows-based web application on AWS, ensuring redundancy, shared storage access, and robust security.
 
