@@ -25,7 +25,7 @@ This document describes the highly available (HA) and scalable infrastructure de
    ~ EC2 SG: Allows inbound traffic only from the ALB and allows outbound traffic only to the FSx SG on port 445 (SMB) and the AD controllers.    
    ~ FSx SG: Allows inbound traffic only from the EC2 SG on port 445 and from the AD controllers on necessary domain ports.    
 
-## 5. Data Flow   
+## 6. Data Flow   
 ~ User Request: A user enters the domain name, which is resolved by Route 53 to the ALB.    
 ~ Traffic Routing: The ALB forwards the request to one of the two healthy EC2 Application Servers in the Public Subnets.     
 ~ Data Access: The EC2 server processes the request and accesses any required shared application data (e.g., configuration, uploaded files) via the Z: drive (mapped to the FSx file share).    
