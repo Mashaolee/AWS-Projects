@@ -2,7 +2,7 @@
 
 This document describes the highly available (HA) and scalable infrastructure designed to host a stateful Windows-based web application on AWS, ensuring redundancy, shared storage access, and robust security.  
 
-1. High-Level Goal  
+## 1. High-Level Goal  
 - To deploy a Windows application across two distinct AWS Availability Zones (AZs) using shared, managed storage (FSx) to achieve sub-second failover and maintain data consistency during an outage of any single component.   
 
 2. Architecture Diagram   
