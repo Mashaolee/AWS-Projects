@@ -19,7 +19,7 @@ This document describes the highly available (HA) and scalable infrastructure de
    - CloudTrail: Records all AWS API calls made within the account, storing logs securely in an S3 Bucket for security auditing and compliance.    
 
 ## 5. Security Configuration
-   - VPC NACL (Network Access Control List): A stateless firewall operating at the subnet level, providing a broad, coarse filter for traffic ~ entering and leaving the Public and Private Subnets.    
+   - VPC NACL (Network Access Control List): A stateless firewall operating at the subnet level, providing a broad, coarse filter for traffic ~ entering and leaving the Public and Private Subnets.
    - Security Groups (SGs): Stateful firewalls applied at the instance level.    
    - ALB SG: Allows inbound traffic from the internet on ports 80/443.     
    - EC2 SG: Allows inbound traffic only from the ALB and allows outbound traffic only to the FSx SG on port 445 (SMB) and the AD controllers.    
